@@ -111,16 +111,16 @@
 
 
 </div><!-- #colorPickerWrapper -->
-<script src="./js/mootools-1.2.4-core.js"></script>
-<script src="./js/mootools-1.2.4.2-more.js"></script>
+<script src="./js/mootools-core-1.3-full-nocompat.js"></script>
+<script src="./js/mootools-more.js"></script>
 <script src="../colorpicker-source.js"></script>
 <script>
 
 window.addEvents({
 	'domready': function(){									 
-		if ($chk($('colorPicker'))) {
+
 			cp1 = new ColorPicker('cp1',{startHex: 'ffcc00', startMode:'s'}); 
-		}
+
 	}
 });
 </script>
