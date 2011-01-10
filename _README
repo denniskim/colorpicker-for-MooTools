@@ -1,0 +1,6 @@
+Colorpicker for MooTools
+
+Dennis Kim (http://dennisjkim.net)
+1/8/2011
+
+Previously implemented a Photoshop-style color picker using a jQuery plugin written by John Dyer (http://johndyer.name) and converted to MooTools 1.2 by Scott Boyce (http://scottpowered.com) for a site build. Did not have the time to write good code. Now fixing and rewriting the code for MooTools 1.3 as a plugin. I know there are already several color pickers available on the MooTools Forge, but this is mainly an exercise for my own edification.
