@@ -1,0 +1,79 @@
+@charset "utf-8";
+/**
+ * Page Layout
+ */
+body,
+html {
+	background: #ccc;
+	color: #222;
+	font: normal 12px/1.5 Arial, Helvetica, sans-serif;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 960px;
+}
+.content {
+	background: #fff;
+	border: 1px solid #222;
+	border-width: 0 4px 4px 4px;
+	-moz-box-shadow: 0 8px 16px rgba(0,0,0,.6);
+	-webkit-box-shadow: 0 8px 16px rgba(0,0,0,.6);
+	box-shadow: 0 8px 16px rgba(0,0,0,.6);
+	margin: 0 auto;
+	padding: 1em;
+	width: 480px;
+}
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+p {
+	margin: 0 0 1em 0;
+}
+p:last-child {
+	margin-bottom: 0;
+}
+.web-form {
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+	margin: 0 0 1em 0;
+}
+.web-form:last-child {
+	margin-bottom: 0;
+}
+.text-row {
+	padding: 1em;
+}
+.text-label {
+	display: block;
+}
+.text-primary {
+	font-weight: bold;
+}
+.text-secondary {
+	color: #888;
+	font-size: 11px;
+}
+.text-input {
+	display: block;
+}
+.text-input input[maxlength="6"] {
+	width: 6em;
+}
+.submit-row {
+	background: #eee;
+	border-top: 1px solid #ccc;
+	margin: 0 0 1em 0;
+	padding: 1em;
+	text-align: right;
+}
+.submit-row:last-child {
+	margin-bottom: 0;
+}
+/**
+ * Color Picker
+ */

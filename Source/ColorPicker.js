@@ -10,6 +10,7 @@ authors:
 
 requires:
 - core/1.3: '*'
+- more/1.3: Drag.Slider
 - more/1.3: Utilities.Color
 
 provides: ColorPicker
@@ -29,7 +30,7 @@ var ColorPicker = new Class({
 
 	initialize: function(options) {
 		this.setOptions(options);
-		this.viewport = $(this.options.input);
+		this.input = $(this.options.input);
 	},
 
 	methodName: function(foobar) {
