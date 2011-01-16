@@ -12,106 +12,15 @@
 </head>
 
 <body class="screen en-us">
-	<div id="colorPickerWrapper">
-	<div id="colorPicker">
+	<div id="colorPicker"></div>
 
-	<h2>Select a shade:</h2>
-
-	<div id="cp1_ColorMap"></div>
-	<div id="cp1_ColorBar"></div>
-
-	<div class="spacer"></div>
-
-	<h2><em>Or</em> enter its values:</h2>
-	<p class="commentary">And bam! You're in <acronym title="Cyan, Magenta, Yellow, Black">CMYK</acronym> and <acronym title="Red, Green, Blue">RGB</acronym> paradise.</p>
-
-	<div class="colorSelectors">
-
-	<p class="csLeft"><input type="radio" id="cp1_HueRadio" name="cp1_Mode" value="0" title="Click to lock this value."><label for="cp1_HueRadio">&nbsp;Hue:</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Hue" value="0" title="Hue">&nbsp;°</p>
-
-	<p class="csLeft"><input type="radio" id="cp1_SaturationRadio" name="cp1_Mode" value="1" title="Click to lock this value."><label for="cp1_SaturationRadio">&nbsp;Saturation</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Saturation" value="0" title="Saturation">&nbsp;%</p>
-
-	<p class="csLeft"><input type="radio" id="cp1_BrightnessRadio" name="cp1_Mode" value="2" title="Click to lock this value."><label for="cp1_BrightnessRadio">&nbsp;Brightness</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Brightness" value="0" title="Brightness">&nbsp;%</p>
-
-	<p class="csLeft"><input type="radio" id="cp1_RedRadio" name="cp1_Mode" value="r" title="Click to lock this value."><label for="cp1_RedRadio">&nbsp;<span style="color:red;">R</span>ed</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Red" value="0" title="Red"></p>
-
-	<p class="csLeft"><input type="radio" id="cp1_GreenRadio" name="cp1_Mode" value="g" title="Click to lock this value."><label for="cp1_GreenRadio">&nbsp;<span style="color:green;">G</span>reen</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Green" value="0" title="Green"></p>
-
-	<p class="csLeft"><input type="radio" id="cp1_BlueRadio" name="cp1_Mode" value="b" title="Click to lock this value."><label for="cp1_BlueRadio">&nbsp;<span style="color:blue;">B</span>lue</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Blue" value="0" title="Blue"></p>
-
-	</div><!-- .colorSelectors -->
-
-	<div class="colorValues">
-
-	<p class="csLeft"><label for="cp1_Cyan">&nbsp;<span style="color:cyan;">C</span>yan</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Cyan" value="0" title="Cyan">&nbsp;%</p>
-
-	<p class="csLeft"><label for="cp1_Magenta">&nbsp;<span style="color:magenta;">M</span>agenta</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Magenta" value="0" title="Magenta">&nbsp;%</p>
-
-	<p class="csLeft"><label for="cp1_Yellow">&nbsp;<span style="color:yellow;">Y</span>ellow</label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Yellow" value="0" title="Yellow">&nbsp;%</p>
-
-	<p class="csLeft"><label for="cp1_Black">&nbsp;Blac<span style="color:black;">k</span></label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Black" value="100" title="Black">&nbsp;%</p>
-
-	<p class="csLeft" style="position:relative;"><label for="cp1_Hex">&nbsp;HEX<span style="text-transform:none;">code</span><span style="position:absolute; right:0; top:2px;">#</span></label></p>
-	<p class="csRight"><input class="userInput" type="text" id="cp1_Hex" value="000000" title="Hexadecimal RGB"></p>
-
-	</div><!-- .colorValues -->
-
-	<div style="display:none;">
-	<img src="../img/rangearrows.png" alt="" title="" width="40" height="9">
-	<img src="../img/mappoint-magnifier-sm.png" alt="" title="" width="31" height="31">
-	<img src="../img/bar-saturation.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-brightness.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-blue-tl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-blue-tr.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-blue-bl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-blue-br.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-red-tl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-red-tr.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-red-bl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-red-br.png" alt="" title="" width="20" height="256">	
-	<img src="../img/bar-green-tl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-green-tr.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-green-bl.png" alt="" title="" width="20" height="256">
-	<img src="../img/bar-green-br.png" alt="" title="" width="20" height="256">
-	<img src="../img/map-red-max.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-red-min.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-green-max.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-green-min.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-blue-max.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-blue-min.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-saturation.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-saturation-overlay.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-brightness.png" alt="" title="" width="256" height="256">
-	<img src="../img/map-hue.png" alt="" title="" width="256" height="256">
-	</div>
-
-	<div class="break"></div>
-	</div><!-- #colorPicker -->
-
-	<div id="pointerArrow"></div>
-
-
-	</div><!-- #colorPickerWrapper -->
-	<script src="./js/mootools-1.2.4-core.js"></script>
-	<script src="./js/mootools-1.2.4.2-more.js"></script>
-	<script src="../colorpicker-source.js"></script>
+	<script src="./js/mootools-core-1.3-full-nocompat.js"></script>
+	<script src="./js/mootools-more-1.3-nocompat.js"></script>
+	<script src="../Source/ColorPicker.js"></script>
 	<script>
-
 	window.addEvents({
 		'domready': function(){									 
-			if ($chk($('colorPicker'))) {
-				cp1 = new ColorPicker('cp1',{startHex: 'ffcc00', startMode:'s'}); 
-			}
+			cp1 = new ColorPicker(); 
 		}
 	});
 	</script>
