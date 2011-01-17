@@ -40,11 +40,30 @@ var ColorPicker = new Class({
 
 		this.element = document.id(this.options.element);
 		
-		this.buildPickerHTML(this.options.prefix);
-		this.buildRgbHTML(this.options.prefix);
+		this.inputs = {
+			R: {
+				name: 'Red'
+				// properties to be defined in .buildInputsHTML
+				// lock: radio button to lock value
+				// val: numerical input/display
+				// label: field label
+				// wrapper: wrapping block element
+			},
+			G: {name: 'Green'},
+			B: {name: 'Blue'},
+			H: {name: 'Hue'},
+			S: {name: 'Saturation'},
+			V: {name: 'Value'}
+		};
+		
+		this.buildPickerHTML();
+		this.buildInputsHTML();
+		this.buildHTMLStyles();
 	},
 
-	buildPickerHTML: function(prefix) {
+	buildPickerHTML: function() {
+		var prefix = this.options.prefix;
+		
 		this.colorMap = new Element('div', {
 			id: prefix + 'colorMap'
 		}).inject(this.element);
@@ -53,10 +72,6 @@ var ColorPicker = new Class({
 			id: prefix + 'colorBar'
 		}).inject(this.element);
 		
-		return this;
-	},
-	
-	buildRgbHTML: function(prefix) {
 		this.rgbContainer = new Element('div', {
 			id: prefix + 'rgbContainer',
 			styles: {
@@ -64,91 +79,77 @@ var ColorPicker = new Class({
 			}
 		}).inject(this.element);
 		
-		this.rgbRedLock = new Element('input', {
-			id: prefix + 'rgbRedLock',
-			'class': prefix + 'rgbLock',
-			name: prefix + 'mode',
-			type: 'radio',
-			title: this.options.lockTip
-		}).inject(this.rgbContainer);
-		this.rgbRedVal = new Element('input', {
-			id: prefix + 'rgbRedVal',
-			'class': prefix + 'rgbVal',
-			type: 'text',
-			value: '0',
-			maxlength: '3'
-		}).inject(this.rgbContainer);
-		this.rgbRedLabel = new Element('label', {
-			id: prefix + 'rgbRedLabel',
-			'class': prefix + 'rgbLabel',
-			html: 'R'
-		}).inject(this.rgbContainer).grab(this.rgbRedVal);
-		this.rgbRed = new Element('p', {
-			id: prefix + 'rgbRed',
-			'class': prefix + 'rgbP'
-		}).inject(this.rgbContainer).adopt(this.rgbRedLock, this.rgbRedLabel);
+		this.hsvContainer = new Element('div', {
+			id: prefix + 'hsvContainer',
+			styles: {
+				position: 'relative'
+			}
+		}).inject(this.element);
 		
-		this.rgbGreenLock = new Element('input', {
-			id: prefix + 'rgbGreenLock',
-			'class': prefix + 'rgbLock',
-			name: prefix + 'mode',
-			type: 'radio',
-			title: this.options.lockTip
-		}).inject(this.rgbContainer);
-		this.rgbGreenVal = new Element('input', {
-			id: prefix + 'rgbGreenVal',
-			'class': prefix + 'rgbVal',
-			type: 'text',
-			value: '0',
-			maxlength: '3'
-		}).inject(this.rgbContainer);
-		this.rgbGreenLabel = new Element('label', {
-			id: prefix + 'rgbGreenLabel',
-			'class': prefix + 'rgbLabel',
-			html: 'G'
-		}).inject(this.rgbContainer).grab(this.rgbGreenVal);
-		this.rgbGreen = new Element('p', {
-			id: prefix + 'rgbGreen',
-			'class': prefix + 'rgbP'
-		}).inject(this.rgbContainer).adopt(this.rgbGreenLock, this.rgbGreenLabel);
+		return this;
+	},
+	
+	buildInputsHTML: function() {
+		var that = this;
+		var prefix = this.options.prefix;
 		
-		this.rgbBlueLock = new Element('input', {
-			id: prefix + 'rgbBlueLock',
-			'class': prefix + 'rgbLock',
-			name: prefix + 'mode',
-			type: 'radio',
-			title: this.options.lockTip
-		}).inject(this.rgbContainer);
-		this.rgbBlueVal = new Element('input', {
-			id: prefix + 'rgbBlueVal',
-			'class': prefix + 'rgbVal',
-			type: 'text',
-			value: '0',
-			maxlength: '3'
-		}).inject(this.rgbContainer);
-		this.rgbBlueLabel = new Element('label', {
-			id: prefix + 'rgbBlueLabel',
-			'class': prefix + 'rgbLabel',
-			html: 'B'
-		}).inject(this.rgbContainer).grab(this.rgbBlueVal);
-		this.rgbBlue = new Element('p', {
-			id: prefix + 'rgbBlue',
-			'class': prefix + 'rgbP'
-		}).inject(this.rgbContainer).adopt(this.rgbBlueLock, this.rgbBlueLabel);
+		Object.each(this.inputs, function(val, key) {
+			that.inputs[key]['lock'] = new Element('input', {
+				id: prefix + key + 'Lock',
+				'class': prefix + 'Lock',
+				name: prefix + 'mode',
+				type: 'radio',
+				title: that.options.lockTip
+			});
+			that.inputs[key]['val'] = new Element('input', {
+				id: prefix + key + 'Val',
+				'class': prefix + 'Val',
+				type: 'text',
+				value: '0',
+				maxlength: '3'
+			});
+			that.inputs[key]['label'] = new Element('label', {
+				id: prefix + key + 'Label',
+				'class': prefix + 'Label',
+				html: key
+			});
+			that.inputs[key]['wrapper'] = new Element('p', {
+				id: prefix + key + 'InputWrapper',
+				'class': prefix + 'InputWrapper'
+			});
+		});
+		
+		['R','G','B','H','S','V'].each(function(val, idx) {
+			var container = '';
+			
+			if (idx < 3) {
+				container = that.rgbContainer;
+			} else {
+				container = that.hsvContainer;
+			}
+			that.inputs[val]['lock'].inject(container);
+			that.inputs[val]['val'].inject(container);
+			that.inputs[val]['label'].inject(container).grab(that.inputs[val]['val']);
+			that.inputs[val]['wrapper'].inject(container).adopt(that.inputs[val]['lock'], that.inputs[val]['label']);
+		});
+	},
+	
+	buildHTMLStyles: function() {
+		var prefix = this.options.prefix;
 		
 		if (this.options.applyDefaultStyles) {
-			$$('.' + prefix + 'rgbLock').each(function(el) {
+			$$('.' + prefix + 'Lock').each(function(el) {
 				el.setStyles({
 					width: '1.5em'
 				});
 			});
-			$$('.' + prefix + 'rgbVal').each(function(el) {
+			$$('.' + prefix + 'Val').each(function(el) {
 				el.setStyles({
 					marginLeft: '.2em',
 					width: '3.5em'
 				});
 			});
-			$$('.' + prefix + 'rgbLabel').each(function(el) {
+			$$('.' + prefix + 'Label').each(function(el) {
 				el.setStyles({
 					width: '7em',
 					textAlign: 'right'
